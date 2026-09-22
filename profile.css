@@ -1,0 +1,51 @@
+.navLinkedIn {
+  color: #fff !important;
+  background: var(--blue);
+  padding: 7px 13px;
+  border-radius: 3px;
+}
+.navLinkedIn:hover { background: var(--blue-dark); }
+.heroActions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.primaryButton, .secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 17px;
+  border: 1px solid var(--blue);
+  font-weight: 700;
+  border-radius: 3px;
+}
+.primaryButton { background: var(--blue); color: #fff; }
+.primaryButton:hover { background: var(--blue-dark); }
+.secondaryButton { color: var(--blue); background: #fff; }
+.secondaryButton:hover { background: var(--pale); }
+.currently ul {
+  list-style: none;
+  padding: 13px 0 0;
+  margin: 13px 0 0;
+  border-top: 1px solid var(--line);
+  color: #4e5b5e;
+  font-size: .86rem;
+}
+.currently li { margin: 5px 0; }
+.currently li::before { content: "·"; color: var(--blue); font-weight: 700; margin-right: 8px; }
+.overline.light { color: #a6d5dc; margin-bottom: 14px; }
+.mutedText { max-width: 610px; }
+.contributionCard { border: 1px solid var(--line); background: var(--paper); padding: 30px; }
+.contributionCard h3 { color: var(--ink); font-size: 1.1rem; }
+.contributionCard ul { padding-left: 20px; margin: 0; color: #435356; }
+.contributionCard li { margin: 9px 0; }
+.contributionCard .textLink { margin-top: 22px; }
+@media (max-width: 1060px) {
+  .navLinks { gap: 16px; }
+  .navLinks a { font-size: .82rem; }
+}
+@media (max-width: 850px) {
+  .navLinks { display: flex; }
+  .navLinks a:not(.navLinkedIn) { display: none; }
+}
+@media (max-width: 620px) {
+  .navLinkedIn { display: inline-flex !important; }
+  .heroActions { flex-direction: column; align-items: stretch; }
+  .primaryButton, .secondaryButton { justify-content: center; }
+}
