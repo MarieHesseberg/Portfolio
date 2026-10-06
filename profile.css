@@ -30,3 +30,7 @@
 .videoShowcase video:focus-visible{outline:2px solid var(--green);outline-offset:4px}
 @media(max-width:700px){.videoCaption{flex-direction:column;gap:8px}}
 @media(prefers-reduced-motion:reduce){.portraitReveal,.soft-reveal .portraitReveal{transition:none}.portraitSurface.revealed:before,.portraitSurface.revealed:after{animation:none}}
+/* Remove the code beneath the same expanding droplet, including the bottom fade. */
+.soft-reveal .codePortrait{--reveal-radius:0px;mask-image:radial-gradient(circle at 50% 50%,transparent max(0px,calc(var(--reveal-radius) - 18px)),#000 var(--reveal-radius));transition:--reveal-radius 1.8s cubic-bezier(.4,0,.2,1)}
+.soft-reveal.revealed .codePortrait{--reveal-radius:90cqw}
+@media(prefers-reduced-motion:reduce){.soft-reveal .codePortrait{transition:none}}
