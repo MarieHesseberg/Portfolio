@@ -20,7 +20,7 @@
   function render() {
     try {
       // One bounded render, without an animation loop or thousands of DOM nodes.
-      const width = 960, height = 1200, stepX = 4, stepY = 6;
+      const width = 1240, height = 1550, stepX = 4, stepY = 6;
       canvas.width = width; canvas.height = height;
       const context = canvas.getContext('2d');
       const sample = document.createElement('canvas');
@@ -33,24 +33,45 @@
       source.drawImage(image, (width - sw) / 2, (height - sh) * 0.48, sw, sh);
       const pixels = source.getImageData(0, 0, width, height).data;
       context.fillStyle = '#060b08'; context.fillRect(0, 0, width, height);
-      context.font = 'bold 8px Consolas, monospace'; context.textBaseline = 'top';
+      context.font = 'bold 7px Consolas, monospace'; context.textBaseline = 'top';
       const code = '01</>{}[]const;return;function;SELECT;git;npm;#$>_010101';
       for (let y = 0; y < height; y += stepY) {
         for (let x = 0; x < width; x += stepX) {
-          const i = ((y + 3) * width + x + 2) * 4;
+          const i = (Math.min(height - 1, y + 3) * width + Math.min(width - 1, x + 2)) * 4;
           let light = (0.2126 * pixels[i] + 0.7152 * pixels[i + 1] + 0.0722 * pixels[i + 2]) / 255;
           const nx = (x / width - 0.5) / 0.53, ny = (y / height - 0.49) / 0.64;
           const fade = Math.min(1, Math.max(0, (1.13 - Math.sqrt(nx * nx + ny * ny)) * 4));
-          light = Math.pow(light, 0.85) * fade * Math.min(1, (height - y) / 150);
+          // Stronger tonal separation keeps eyes, glasses, hair and facial contours
+          // readable at normal size, while fine glyphs remain visible close up.
+          light = Math.min(1, Math.max(0, (light - 0.12) * 1.65)) * fade * Math.min(1, (height - y) / 150);
           if (light < 0.025) continue;
-          context.fillStyle = `rgb(${Math.round(15 + light * 140)},${Math.round(29 + light * 225)},${Math.round(20 + light * 155)})`;
+          context.fillStyle = `rgb(${Math.round(12 + light * 180)},${Math.round(25 + light * 230)},${Math.round(17 + light * 185)})`;
           context.fillText(code[(Math.floor(x / stepX) + Math.floor(y / stepY) * 17) % code.length], x, y);
         }
       }
       surface.classList.add('rendered'); toggle.hidden = false;
-      toggle.addEventListener('click', () => {
-        const rendered = surface.classList.toggle('rendered'); surface.classList.toggle('original', !rendered); toggle.textContent = rendered ? 'Vis originalbilde' : 'Vis kodeportrett';
+      const reveal = image.cloneNode();
+      reveal.className = 'portrait portraitReveal'; reveal.alt = '';
+      reveal.setAttribute('aria-hidden', 'true');
+      surface.append(reveal);
+      let pinned = false, hovering = false;
+      const update = () => {
+        surface.classList.toggle('revealed', pinned || hovering);
+        toggle.textContent = pinned ? 'Vis kodeportrett' : 'Vis originalbilde';
+        toggle.setAttribute('aria-pressed', String(pinned));
+      };
+      surface.addEventListener('pointerenter', event => {
+        if (event.pointerType !== 'mouse') return;
+        const rect = surface.getBoundingClientRect();
+        surface.style.setProperty('--drop-x', `${((event.clientX - rect.left) / rect.width) * 100}%`);
+        surface.style.setProperty('--drop-y', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+        hovering = true; update();
       });
+      surface.addEventListener('pointerleave', () => { hovering = false; update(); });
+      toggle.addEventListener('click', () => {
+        pinned = !pinned; update();
+      });
+      update();
     } catch (_) {
       // The real photograph remains visible if canvas sampling is unavailable.
       surface.classList.remove('rendered');
@@ -59,5 +80,3 @@
   if (image.complete && image.naturalWidth) render();
   else image.addEventListener('load', render, { once: true });
 })();
-
-
