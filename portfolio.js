@@ -1,17 +1,24 @@
 (() => {
   'use strict';
   const links = [...document.querySelectorAll('.navLinks a')];
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      links.forEach(link => {
-        if (link.hash === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    }, { rootMargin: '-125px 0px -45% 0px', threshold: [0, 0.2, 0.5] });
-    links.forEach(link => { const section = document.querySelector(link.hash); if (section) observer.observe(section); });
+  const sections = links.map(link => ({link, section: document.querySelector(link.hash)})).filter(item => item.section);
+  let scrollPending = false;
+  function updateNavigation() {
+    scrollPending = false;
+    const line = document.querySelector('.nav').getBoundingClientRect().height + 60;
+    let active = sections[0];
+    for (const item of sections) if (item.section.getBoundingClientRect().top <= line) active = item;
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) active = sections[sections.length - 1];
+    links.forEach(link => {
+      if (link === active.link) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
   }
+  window.addEventListener('scroll', () => {
+    if (!scrollPending) { scrollPending = true; requestAnimationFrame(updateNavigation); }
+  }, {passive:true});
+  window.addEventListener('resize', updateNavigation);
+  updateNavigation();
   const image = document.querySelector('.portrait');
   const canvas = document.querySelector('.codePortrait');
   const surface = document.querySelector('.portraitSurface');
