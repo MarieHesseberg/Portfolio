@@ -61,6 +61,7 @@
       reveal.className = 'portrait portraitReveal'; reveal.alt = '';
       reveal.setAttribute('aria-hidden', 'true');
       surface.append(reveal);
+      if (window.CSS && 'registerProperty' in CSS) surface.classList.add('soft-reveal');
       let pinned = false, hovering = false;
       const update = () => {
         surface.classList.toggle('revealed', pinned || hovering);
@@ -69,9 +70,6 @@
       };
       surface.addEventListener('pointerenter', event => {
         if (event.pointerType !== 'mouse') return;
-        const rect = surface.getBoundingClientRect();
-        surface.style.setProperty('--drop-x', `${((event.clientX - rect.left) / rect.width) * 100}%`);
-        surface.style.setProperty('--drop-y', `${((event.clientY - rect.top) / rect.height) * 100}%`);
         hovering = true; update();
       });
       surface.addEventListener('pointerleave', () => { hovering = false; update(); });
