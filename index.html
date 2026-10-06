@@ -5,39 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Marie Hesseberg studerer IT og informasjonssystemer ved Universitetet i Agder og søker samarbeid med en bedrift om bachelorprosjekt.">
   <title>Marie Hesseberg | Studentportfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;650;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="profile.css">
 </head>
 <body>
   <a class="skip-link" href="#innhold">Hopp til hovedinnhold</a>
   <nav class="nav" aria-label="Hovednavigasjon">
-    <a class="brand" href="#topp">Marie Hesseberg</a>
-    <div class="navLinks"><a href="#om">Om meg</a><a href="#kompetanse">Kompetanse</a><a href="#erfaring">Erfaring</a><a href="#bachelor">Bachelorprosjekt</a><a class="navLinkedIn" href="https://www.linkedin.com/in/marie-hesseberg-1a4900405/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+    <a class="brand" href="#topp"><span aria-hidden="true">&gt;_</span> marie<span class="brandPath"> / portfolio</span></a>
+    <div class="navLinks"><a href="#topp" aria-current="location">01_HOME</a><a href="#om">02_ABOUT</a><a href="#erfaring">03_PROJECTS</a><a href="#kompetanse">04_SKILLS</a><a href="#cv">05_CV</a><a href="#kontakt">06_CONTACT</a></div>
   </nav>
 
   <main id="innhold">
     <header class="hero" id="topp">
       <div class="heroText">
-        <p class="heroLabel">IT-STUDENT · UNIVERSITETET I AGDER</p>
-        <h1>Marie Hesseberg</h1>
+        <p class="heroLabel">marie@portfolio:~$ whoami<span class="cursor" aria-hidden="true">_</span></p>
+        <h1><span class="greeting">Hei,</span> jeg er <span>Marie.</span></h1><p class="heroRole">IT-student / Fullstack / UX / Tilgjengelighet</p>
         <p class="lead">Jeg ønsker å utvikle digitale løsninger som kombinerer god funksjonalitet med en enkel og tilgjengelig brukeropplevelse. Nå ser jeg etter en relevant problemstilling og en bedrift å samarbeide med om bachelorprosjekt.</p>
-        <div class="heroActions"><a class="primaryButton" href="#bachelor">Hva jeg ser etter <span aria-hidden="true">↓</span></a><a class="secondaryButton" href="https://www.linkedin.com/in/marie-hesseberg-1a4900405/" target="_blank" rel="noreferrer">Se LinkedIn-profil <span aria-hidden="true">↗</span></a></div>
+        <div class="heroActions"><a class="primaryButton" href="#erfaring">VIEW_PROJECTS <span aria-hidden="true">↗</span></a><a class="secondaryButton" href="#om">ABOUT_ME</a><a class="secondaryButton" href="#kontakt">CONTACT</a></div>
       </div>
       <div class="heroVisual">
-        <img class="portrait" src="marie-hesseberg.jpg" alt="Portrett av Marie Hesseberg" width="1240" height="2208">
-        <aside class="currently">
-          <span>Profil</span>
-          <p>Faglig retning</p><h2>Fullstack-utvikling</h2>
-          <ul><li>Frontend og brukeropplevelse</li><li>Backend og databaser</li><li>Tilgjengelige digitale løsninger</li></ul>
-        </aside>
+        <figure class="portraitFrame"><div class="fileBar"><span aria-hidden="true">▧</span> marie-hesseberg.jpg <span class="fileMode">ASCII_RENDER</span></div><div class="portraitSurface"><img class="portrait" src="marie-hesseberg.jpg" alt="Portrett av Marie Hesseberg" width="1240" height="2208"><canvas class="codePortrait" aria-hidden="true"></canvas></div><figcaption>01 / Marie Hesseberg <button type="button" class="portraitToggle" hidden>Vis originalbilde</button></figcaption></figure>
       </div>
     </header>
 
     <section class="section about" id="om">
-      <div class="sectionIntro"><span>01</span><h2>Om meg</h2></div>
+      <div class="sectionIntro"><span>02 /</span><h2>about_me.txt</h2></div>
       <div class="aboutText"><div class="aboutDetails">
         <p>Jeg studerer IT og informasjonssystemer ved Universitetet i Agder. Gjennom studiet har jeg fått erfaring med hele utviklingsprosessen, fra å forstå brukerbehov og utforme løsninger til programmering, databaser, testing og dokumentasjon.</p>
         <p>Jeg trives med både frontend og backend og ønsker å utvikle meg videre som fullstackutvikler. Jeg er spesielt interessert i brukeropplevelse og universell utforming. For meg bør en god løsning ikke bare fungere teknisk, men også være oversiktlig og enkel å bruke.</p>
@@ -46,7 +38,7 @@
     </section>
 
     <section class="section skills" id="kompetanse">
-      <div class="sectionIntro"><span>02</span><h2>Dette har jeg jobbet med</h2></div>
+      <div class="sectionIntro"><span>04 /</span><h2>skills.json</h2></div>
       <p class="sectionLead">Studiet dekker både teknisk utvikling og hvordan digitale løsninger fungerer i organisasjoner. Dette er verktøyene og temaene jeg har mest erfaring med så langt.</p>
       <div class="toolGrid">
         <article class="toolGroup"><h3>Utvikling</h3><div class="chips"><span>C#</span><span>.NET</span><span>Objektorientert programmering</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>API-er</span></div></article>
@@ -71,23 +63,25 @@
     </section>
 
     <section class="section easyfisk" id="erfaring">
-      <div class="sectionIntro inverse"><span>03</span><h2>Erfaring i praksis</h2></div>
-      <div class="projectLayout"><div><p class="overline light">PRAKSISPROSJEKT · EASYFISK</p><p class="largeText">Fra brukerbehov til digital løsning.</p><p>I praksis hos Mandalselva Elveeigarlag utvikler jeg EasyFisk, en app som samler informasjon og praktiske funksjoner for fiskere. Prosjektet har gitt meg erfaring med å omsette behov fra en reell oppdragsgiver til prioriterte krav, grensesnitt og tekniske løsninger.</p></div>
+      <div class="sectionIntro inverse"><span>03 /</span><h2>projects/</h2></div>
+      <div class="projectLayout"><div><p class="overline light">projects/ └── easyfisk/</p><p class="largeText">Fra brukerbehov til digital løsning.</p><p>I praksis hos Mandalselva Elveeigarlag utvikler jeg EasyFisk, en app som samler informasjon og praktiske funksjoner for fiskere. Prosjektet har gitt meg erfaring med å omsette behov fra en reell oppdragsgiver til prioriterte krav, grensesnitt og tekniske løsninger.</p></div>
         <div class="projectTasks"><h3>Erfaring jeg tar med videre</h3><p><b aria-hidden="true">✓</b>Kravkartlegging og dialog med oppdragsgiver</p><p><b aria-hidden="true">✓</b>Planlegging av funksjoner og brukerflyt</p><p><b aria-hidden="true">✓</b>Frontend, backend og database</p><p><b aria-hidden="true">✓</b>Testing, dokumentasjon og iterativ forbedring</p></div>
       </div>
       <div class="projectNote"><strong>Det viktigste jeg har lært:</strong> Gode løsninger krever både teknisk gjennomføring, forståelse for brukerne og løpende avklaringer med oppdragsgiver.</div>
     </section>
 
     <section class="section work" id="bachelor">
-      <div class="sectionIntro"><span>04</span><h2>Dette ser jeg etter</h2></div>
+      <div class="sectionIntro"><span>→ /</span><h2>bachelor_project.md</h2></div>
       <div class="workGrid"><div><p class="largeText">Et bachelorprosjekt med en reell utfordring og tydelig verdi for brukerne eller virksomheten.</p><p class="mutedText">Jeg er åpen for ulike bransjer og problemstillinger. Det viktigste er at prosjektet gir rom for å undersøke et faktisk behov og utvikle eller forbedre en digital løsning.</p></div><div class="contributionCard"><h3>Dette kan jeg bidra med</h3><ul><li>Selvstendig og strukturert oppfølging av oppgaver</li><li>Forståelse for både tekniske og brukerrettede behov</li><li>Utvikling på tvers av grensesnitt, logikk og data</li><li>Interesse for tilgjengelighet, kvalitet og brukervennlighet</li><li>Dialog, dokumentasjon og forbedring gjennom tilbakemeldinger</li></ul><a class="textLink" href="mailto:marielh@uia.no">Ta gjerne kontakt <span aria-hidden="true">→</span></a></div></div>
     </section>
+    <section class="section cv" id="cv"><div class="sectionIntro"><span>05 /</span><h2>cv.txt</h2></div><div class="cvLayout"><div><p class="overline">UTDANNING</p><h3>IT og informasjonssystemer</h3><p>Universitetet i Agder</p><p class="mutedText">Fullstack-utvikling, brukeropplevelse og universell utforming. Se kompetanse og praksisprosjekt for mer om min erfaring.</p></div><a class="secondaryButton" href="https://www.linkedin.com/in/marie-hesseberg-1a4900405/" target="_blank" rel="noreferrer">OPEN_LINKEDIN ↗</a></div></section>
   </main>
 
-  <footer id="kontakt"><div><p class="overline">KONTAKT</p><h2>Marie Hesseberg</h2></div><div class="contactLinks">
+  <footer id="kontakt"><div><p class="overline">06 / CONTACT</p><h2>Marie Hesseberg</h2></div><div class="contactLinks">
     <a href="mailto:marielh@uia.no"><span>E-post</span>marielh@uia.no</a>
     <a href="tel:+4790516090"><span>Telefon</span>905 16 090</a>
     <a href="https://www.linkedin.com/in/marie-hesseberg-1a4900405/" target="_blank" rel="noreferrer"><span>LinkedIn</span>Se profil ↗</a>
   </div></footer>
+  <script src="portfolio.js" defer></script>
 </body>
 </html>
