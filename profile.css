@@ -24,7 +24,7 @@
 .videoShowcase .fileBar{padding:14px 20px}
 .videoShowcase h3{font-size:14px;margin:0;color:var(--ink)}
 .videoShowcase video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
-.videoCaption{display:flex;justify-content:space-between;gap:20px;padding:16px 20px;font-size:12px;color:var(--muted)}
+.videoCaption{display:flex;justify-content:space-between;gap:20px;padding:16px 20px;font-size:15px;color:var(--muted)}
 .videoCaption p{margin:0}
 .videoCaption a{color:var(--green);white-space:nowrap}
 .videoShowcase video:focus-visible{outline:2px solid var(--green);outline-offset:4px}
@@ -34,3 +34,5 @@
 .soft-reveal .codePortrait{--reveal-radius:0px;mask-image:radial-gradient(circle at 50% 50%,transparent max(0px,calc(var(--reveal-radius) - 18px)),#000 var(--reveal-radius));transition:--reveal-radius 1.8s cubic-bezier(.4,0,.2,1)}
 .soft-reveal.revealed .codePortrait{--reveal-radius:90cqw}
 @media(prefers-reduced-motion:reduce){.soft-reveal .codePortrait{transition:none}}
+
+.videoSection .videoShowcase{margin-top:0}
